@@ -1,7 +1,7 @@
 //Подключаем библиотеку ЖК-дисплея 
 #include <LiquidCrystal.h>
 
-//Датчик присоединен ко выводу № 2
+//Датчик присоединен к выводу № 2 (замыкающая кнопка между контактом №2 и землей)
 #define pinSensor 2
 
 /*
@@ -104,7 +104,7 @@ void interruptFunction(){
 
 //Подсчет времени работы программы
 void uptime(){
-  //полных секунд с момента старта
+  //полных миллисекунд с момента старта
   unsigned long mseconds = millis();
   int days = 0;
   int hours = 0;
@@ -121,5 +121,6 @@ void uptime(){
   mseconds -= (mins * msec_in_min);
   //прошло секунд с момента запуска
   sec = mseconds / msec_in_sec;
+  //записываем полученные данные в строку row_2
   sprintf(row_2,"uptime: %02d %02d %02d", hours, mins, sec );
 }
